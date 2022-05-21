@@ -6,14 +6,12 @@ const initialState = {
   comments: [],
   error: null,
 };
-
+const url = `${process.env.API_URL}/api/comments/all`;
 export const storeAllComments = createAsyncThunk(
   "allComments/storeAllComments",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(
-        "http://localhost:5000/api/comments/all"
-      );
+      const { data } = await axios.get(url);
       //localStorage.removeItem("AllBlogs");
       localStorage.setItem("AllComments", JSON.stringify(data));
       return data;

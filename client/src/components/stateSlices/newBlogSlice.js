@@ -12,7 +12,7 @@ export const createNewBlog = createAsyncThunk(
   async (newBlogFormData, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/blogs/createblog",
+        "/api/blogs/createblog",
         newBlogFormData
       );
       return data;

@@ -32,7 +32,7 @@ const NewComment = ({
       //console.log(parentBlogId, parentCommentId);
       try {
         const { data } = await axios.post(
-          "http://localhost:5000/api/comments/createComment",
+          "/api/comments/createComment",
           commentData
         );
         if (data) {
