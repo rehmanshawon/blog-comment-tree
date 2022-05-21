@@ -16,7 +16,7 @@ export const storeAllBlogs = createAsyncThunk(
       localStorage.setItem("AllBlogs", JSON.stringify(data));
       return data;
     } catch (err) {
-      console.log(err);
+      //(err);
       return rejectWithValue(err.response.data);
     }
   }

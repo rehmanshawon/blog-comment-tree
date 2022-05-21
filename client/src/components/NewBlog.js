@@ -28,7 +28,7 @@ const NewBlog = ({ history }) => {
         dispatch(storeAllBlogs());
         setBlogsCreated(data);
       } catch (err) {
-        console.log(err);
+        //(err);
       }
     },
   });

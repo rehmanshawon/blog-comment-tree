@@ -29,14 +29,14 @@ const NewComment = ({
         parentBlog: parentBlogId,
         parentComment: parentCommentId,
       };
-      //console.log(parentBlogId, parentCommentId);
+      ////(parentBlogId, parentCommentId);
       try {
         const { data } = await axios.post(
           "/api/comments/createComment",
           commentData
         );
         if (data) {
-          //console.log(data);
+          ////(data);
           dispatch(storeAllComments());
           if (!topmost)
             setTimeout(() => {
@@ -45,7 +45,7 @@ const NewComment = ({
             }, 250);
         }
       } catch (err) {
-        console.log(err);
+        //(err);
       }
     },
   });
@@ -99,16 +99,23 @@ const NewComment = ({
             ) : null}
           </div>
           <div className="mx-auto">
-            <button
-              type="submit"
-              className="btn btn-lg btn-primary btn-block"
-              // onClick={(event) => {
-              //   event.preventDefault();
-              //   handleReply();
-              // }}
-            >
+            <button type="submit" className="btn btn-lg btn-primary btn-block">
               Post
-            </button>
+            </button>{" "}
+            {!topmost && (
+              <button
+                type="submit"
+                className="btn btn-lg btn-primary btn-block"
+                onClick={() => {
+                  if (!topmost) {
+                    setReplying(false);
+                    setShow(false);
+                  }
+                }}
+              >
+                Cancel
+              </button>
+            )}
           </div>
         </form>
       </div>

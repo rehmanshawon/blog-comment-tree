@@ -69,7 +69,7 @@ const Header = ({ history }) => {
                         type="button"
                         key={i}
                         onClick={() => {
-                          //console.log(blog.id);
+                          ////(blog.id);
                           history.push(`/blogview/${blog._id}`);
                         }}
                       >

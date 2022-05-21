@@ -17,7 +17,7 @@ export const createNewBlog = createAsyncThunk(
       );
       return data;
     } catch (err) {
-      console.log(err);
+      //(err);
       return rejectWithValue(err.response.data);
     }
   }

@@ -1,8 +1,8 @@
 import React from "react";
-//import { useSelector } from "react-redux";
+import formatDistance from "date-fns/formatDistance";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import NewComment from "./NewComment";
 import Comment from "./Comment";
 
@@ -51,7 +51,7 @@ const BlogView = (props) => {
     if (blogs && blogs.length) setBlog(blogs.find((b) => b._id === id));
     let plainComments = [...comments];
     let tmpComments = plainComments.filter((c) => c.parentBlog._id === id);
-    //console.log(tmpComments);
+    ////(tmpComments);
     let nestedComments = nestArray(tmpComments);
     setThisBlogComments(nestedComments);
   }, [id, blogs, comments]);
@@ -71,9 +71,12 @@ const BlogView = (props) => {
                   {blog.blogBody}
                 </Card.Text>
                 <footer className="blockquote-footer">
-                  <cite title="Source Title">{blog.createdAt}</cite>
+                  <cite title="Source Title">
+                    {new Date(blog.createdAt).toLocaleString() + "  "}
+                    {formatDistance(new Date(blog.createdAt), new Date()) +
+                      " ago"}
+                  </cite>
                 </footer>
-                <Button variant="primary">Edit</Button>
               </Card.Body>
             </Card>
             {error && <p>{error.message}</p>}
