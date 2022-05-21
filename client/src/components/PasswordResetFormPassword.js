@@ -9,7 +9,7 @@ const PasswordResetFormPassword = ({ history, match }) => {
     (state) => state.passwordResetPassword
   );
   const dispatch = useDispatch();
-  console.log(status, passwordReset, error);
+  //(status, passwordReset, error);
   const formik = useFormik({
     initialValues: {
       password: "",

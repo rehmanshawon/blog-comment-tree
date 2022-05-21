@@ -32,7 +32,7 @@ const RegisterForm = ({ history }) => {
         .required("Please enter your password"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      //(values);
       dispatch(registerUser(values));
     },
   });

@@ -34,7 +34,7 @@ router.get(
     Blog.find({})
       .populate("blogWriter")
       .then(function (blogs) {
-        //console.log(blogs);
+        ////(blogs);
         res.json(blogs);
       });
   })

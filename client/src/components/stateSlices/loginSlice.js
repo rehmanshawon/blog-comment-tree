@@ -11,14 +11,14 @@ export const loginUser = createAsyncThunk(
   "login/loginUser",
   async (loginFormData, { rejectWithValue }) => {
     try {
-      // console.log(loginFormData);
+      // //(loginFormData);
       const { data } = await axios.post("/api/users/login", loginFormData);
       // const { data } = await axios.post("/api/blogs/createblog", {
       //   blogTitle: "hello",
       //   blogBody: "hello",
       //   blogWriter: "62849f4570abf9686c04d441",
       // });
-      //  console.log(data);
+      //  //(data);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data);

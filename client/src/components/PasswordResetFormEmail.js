@@ -8,7 +8,7 @@ const PasswordResetFormEmail = () => {
   const { status, emailSentSuccess, error } = useSelector(
     (state) => state.passwordResetEmail
   );
-  console.log(status, emailSentSuccess, error);
+  //(status, emailSentSuccess, error);
   const dispatch = useDispatch();
 
   const formik = useFormik({

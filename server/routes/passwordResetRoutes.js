@@ -63,7 +63,7 @@ router.post(
       user.passwordResetToken = undefined;
       user.passwordResetExpires = undefined;
       const updatedUser = await user.save();
-      console.log(updatedUser);
+      //(updatedUser);
       res.json(updatedUser);
     } else {
       const err = new Error("Password reset token is invalid or has expired");

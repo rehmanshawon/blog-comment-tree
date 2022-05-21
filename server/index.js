@@ -32,5 +32,5 @@ app.use(globalErrorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+  //(`Server listening on port ${PORT}`);
 });

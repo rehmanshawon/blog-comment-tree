@@ -24,14 +24,11 @@ const NewBlog = ({ history }) => {
     onSubmit: async (values) => {
       const blogData = { ...values, blogWriter: loggedInUser.id };
       try {
-        const { data } = await axios.post(
-          "http://localhost:5000/api/blogs/createblog",
-          blogData
-        );
+        const { data } = await axios.post("/api/blogs/createblog", blogData);
         dispatch(storeAllBlogs());
         setBlogsCreated(data);
       } catch (err) {
-        console.log(err);
+        //(err);
       }
     },
   });

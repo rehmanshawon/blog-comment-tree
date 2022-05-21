@@ -41,7 +41,7 @@ router.get(
       .populate("parentBlog")
       .populate("parentComment")
       .then(function (comments) {
-        console.log(comments);
+        //(comments);
         res.json(comments);
       });
   })

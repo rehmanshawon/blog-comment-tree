@@ -6,17 +6,17 @@ const initialState = {
   blogs: [],
   error: null,
 };
-
+const url = "/api/blogs/all";
 export const storeAllBlogs = createAsyncThunk(
   "allBlogs/storeAllBlogs",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/blogs/all");
+      const { data } = await axios.get(url);
       //localStorage.removeItem("AllBlogs");
       localStorage.setItem("AllBlogs", JSON.stringify(data));
       return data;
     } catch (err) {
-      console.log(err);
+      //(err);
       return rejectWithValue(err.response.data);
     }
   }
