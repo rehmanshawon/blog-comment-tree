@@ -23,12 +23,12 @@ const preloadedState = {
   login: {
     loggedInUser: loggedInUserFromStorage,
   },
-  allBlogs: {
-    blogs: blogsFromStorage,
-  },
-  allComments: {
-    comments: commentsFromStorage,
-  },
+  // allBlogs: {
+  //   blogs: blogsFromStorage,
+  // },
+  // allComments: {
+  //   comments: commentsFromStorage,
+  // },
 };
 
 export default configureStore({

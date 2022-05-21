@@ -6,7 +6,7 @@ const initialState = {
   comments: [],
   error: null,
 };
-const url = `${process.env.API_URL}/api/comments/all`;
+const url = "/api/comments/all";
 export const storeAllComments = createAsyncThunk(
   "allComments/storeAllComments",
   async (_, { rejectWithValue }) => {

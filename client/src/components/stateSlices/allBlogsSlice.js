@@ -6,7 +6,7 @@ const initialState = {
   blogs: [],
   error: null,
 };
-const url = `${process.env.API_URL}/api/blogs/all`;
+const url = "/api/blogs/all";
 export const storeAllBlogs = createAsyncThunk(
   "allBlogs/storeAllBlogs",
   async (_, { rejectWithValue }) => {
