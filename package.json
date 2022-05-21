@@ -8,10 +8,10 @@
     "node": "v16.14.0"
   },
   "scripts": {
+    "start": "node server/index.js",
     "client": "npm run start --prefix client",
     "server": "nodemon server/index.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "start": "node server/index.js",
     "build": "cd client && npm install && npm run build"
   },
   "keywords": [],
