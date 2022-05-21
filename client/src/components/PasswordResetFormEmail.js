@@ -1,42 +1,45 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { loginUser } from "./stateSlices/loginSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { sendPasswordResetEmail } from "./stateSlices/passwordResetEmailSlice";
 
-const LoginForm = ({ history }) => {
-  const { status, loggedInUser, error } = useSelector((state) => state.login);
+const PasswordResetFormEmail = () => {
+  const { status, emailSentSuccess, error } = useSelector(
+    (state) => state.passwordResetEmail
+  );
+  console.log(status, emailSentSuccess, error);
   const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
     },
     validationSchema: Yup.object({
       email: Yup.string()
         .email("Invalid email address")
         .required("Please enter your email address"),
-      password: Yup.string().required("Please enter your password"),
     }),
-    onSubmit: async (values) => {
-      dispatch(loginUser(values));
+    onSubmit: (values) => {
+      dispatch(sendPasswordResetEmail(values));
     },
   });
 
-  if (loggedInUser) {
-    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-    history.push("/welcome");
-  }
-
   return (
-    <div className="login-form-container">
+    <div className="passwordResetEmail-form-container">
       <div className="col-10 col-sm-8 col-md-5 mx-auto">
-        <h1 className="font-weight-bold">Login</h1>
+        <h1 className="font-weight-bold">Reset Password</h1>
       </div>
       <form onSubmit={formik.handleSubmit}>
         <div className="form-group col-10 col-sm-8 col-md-5 mx-auto mt-5">
+          {emailSentSuccess && (
+            <div
+              className="alert alert-success password-reset-email"
+              role="alert"
+            >
+              {emailSentSuccess.message}
+            </div>
+          )}
           {error && (
             <div className="alert alert-danger" role="alert">
               {error}
@@ -56,21 +59,6 @@ const LoginForm = ({ history }) => {
             </small>
           ) : null}
         </div>
-        <div className="form-group col-10 col-sm-8 col-md-5 mx-auto">
-          <label htmlFor="password">Password</label>
-          <input
-            className="form-control form-control-lg"
-            id="password"
-            name="password"
-            type="password"
-            {...formik.getFieldProps("password")}
-          />
-          {formik.touched.password && formik.errors.password ? (
-            <small className="form-text text-danger">
-              {formik.errors.password}
-            </small>
-          ) : null}
-        </div>
         <div className="col-10 col-sm-8 col-md-5 mx-auto">
           <button type="submit" className="btn btn-lg btn-primary btn-block">
             {status === "loading" ? (
@@ -78,24 +66,11 @@ const LoginForm = ({ history }) => {
                 <span className="sr-only">Loading...</span>
               </div>
             ) : null}{" "}
-            Login
+            Request Password Reset
           </button>
-        </div>
-        <div className="col-10 col-sm-8 col-md-5 mx-auto mt-3">
-          <p>
-            <Link to="/account/password/forgot" className="password-forgot">
-              I forgot my password
-            </Link>
-          </p>
-          <p className="register-cta">
-            Don't have an account?{" "}
-            <Link className="register" to="/register">
-              Register
-            </Link>
-          </p>
         </div>
       </form>
     </div>
   );
 };
-export default LoginForm;
+export default PasswordResetFormEmail;
