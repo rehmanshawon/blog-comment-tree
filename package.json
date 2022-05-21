@@ -8,7 +8,6 @@
     "node": "v16.14.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm run start --prefix client",
     "server": "nodemon server/index.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
